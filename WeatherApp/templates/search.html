@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Weather Search</title>
+</head>
+<body>
+    <h1>Weather Search</h1>
+    <form method="post">
+        {% csrf_token %}
+        <label for="city">Enter city name:</label>
+        <input type="text" id="city" name="city" required>
+        <button type="submit">Search</button>
+    </form>
+    {% if weather_data %}
+        <h2>Weather in {{ weather_data.city }}</h2>
+        <p>Temperature: {{ weather_data.temperature }}°C</p>
+        <p>Description: {{ weather_data.description }}</p>
+        <img src="http://openweathermap.org/img/w/{{ weather_data.icon }}.png" alt="Weather Icon">
+    {% endif %}
+</body>
+</html>
